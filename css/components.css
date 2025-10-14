@@ -1,0 +1,40 @@
+/* HEADER */
+.site-header{
+  background:linear-gradient(135deg,var(--grad-start),var(--grad-end));
+  padding:var(--s-6) 0 var(--s-7);
+  position:relative;
+}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:var(--s-4)}
+.brand{display:flex; flex-direction:column; line-height:1}
+.brand .logo{font-family:var(--font-serif); font-size:var(--fs-xxl); font-weight:800; color:#fff; letter-spacing:.3px}
+.brand .tagline{color:#FFF7ED; opacity:.95; margin-top:6px}
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 16px; border-radius:var(--radius-pill)}
+.btn-ghost{color:#fff; border:1.5px solid var(--orange-ghost); background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08); border-color:var(--orange-ghost-hover)}
+.btn-icon{width:40px; height:40px; border-radius:var(--radius-pill); display:inline-grid; place-items:center; border:1.5px solid rgba(255,255,255,.6); color:#fff}
+.btn-primary{background:var(--red); color:#fff; padding:10px 20px; font-weight:700}
+.btn-primary:hover{background:var(--red-hover)}
+
+/* CARD DE BUSCA */
+.search-wrap{margin-top:-56px; display:flex; justify-content:center}
+.search-card{
+  width:min(1100px,92vw);
+  background:var(--brown); color:var(--brown-ink);
+  border-radius:var(--radius); padding:var(--s-6);
+  box-shadow:var(--glow); border:1px solid rgba(0,0,0,.15);
+}
+.search-grid{display:grid; gap:var(--s-5)}
+@media (min-width:900px){.search-grid{grid-template-columns:1fr 1fr 1fr; align-items:end}}
+.field{display:grid; gap:8px}
+.field label{font-size:var(--fs-sm); color:#EBD2C3; opacity:.95}
+.field .value{font-weight:800; font-size:var(--fs-xl); color:#fff}
+.field .line{height:1.5px; background:var(--brown-line); opacity:.75; margin-top:4px}
+
+/* CARROSSEL MOCK */
+.carousel{margin:var(--s-6) auto; width:min(1100px,92vw); position:relative; display:flex; align-items:center; gap:var(--s-4)}
+.card-poster{flex:0 0 66%; border-radius:32px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.25); transform:scale(1); transition:transform .2s ease}
+.card-poster.is-center{transform:scale(1.06)}
+.card-poster img{width:100%; height:280px; object-fit:cover}
+.poster-side{flex:0 0 18%; border-radius:22px; overflow:hidden; opacity:.85; box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.poster-side img{width:100%; height:220px; object-fit:cover}

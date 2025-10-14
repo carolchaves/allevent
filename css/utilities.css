@@ -1,0 +1,4 @@
+.hidden{display:none!important}
+.center{display:grid; place-items:center}
+.mt-6{margin-top:var(--s-6)}
+.stack>*+*{margin-top:var(--s-2)}
