@@ -2,7 +2,7 @@
   /* Fundo */
   --color-bg:#ffffff;
 
-  /* Header laranja (ajuste se o Figma tiver outros hex) */
+  /* Header laranja */
   --grad-start:#F59E0B;
   --grad-end:#EA580C;
 
@@ -29,6 +29,12 @@
   --radius:24px; 
   --radius-pill:999px;
 
-  /* Sombra/Glow do card */
+  /* Sombras */
   --glow:0 24px 38px rgba(124,58,237,.18);
+  --card-shadow: 0 12px 30px rgba(0,0,0,.12);
+  --card-shadow-lg: 0 24px 50px rgba(0,0,0,.16);
+
+  /* Acento */
+  --accent:#4F46E5;
+  --accent-ink:#fff;
 }
