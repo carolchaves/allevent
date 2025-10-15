@@ -6,10 +6,10 @@
   <title>AllEvent</title>
 
   <!-- CSS com cache-busting -->
-  <link rel="stylesheet" href="css/tokens.css?v=2">
-  <link rel="stylesheet" href="css/base.css?v=2">
-  <link rel="stylesheet" href="css/components.css?v=2">
-  <link rel="stylesheet" href="css/utilities.css?v=2">
+  <link rel="stylesheet" href="css/tokens.css?v=3">
+  <link rel="stylesheet" href="css/base.css?v=3">
+  <link rel="stylesheet" href="css/components.css?v=3">
+  <link rel="stylesheet" href="css/utilities.css?v=3">
 </head>
 <body>
   <!-- HEADER -->
@@ -50,12 +50,61 @@
     </section>
   </div>
 
-  <!-- CARROSSEL MOCK -->
-  <section class="carousel">
-    <div class="poster-side"><img src="https://picsum.photos/seed/a/400/300" alt=""></div>
-    <div class="card-poster is-center"><img src="https://picsum.photos/seed/b/900/300" alt=""></div>
-    <div class="poster-side"><img src="https://picsum.photos/seed/c/400/300" alt=""></div>
+  <!-- CARROSSEL -->
+  <section class="carousel" aria-label="Eventos em destaque">
+    <button class="nav prev" aria-label="Anterior">←</button>
+
+    <div class="track" data-track>
+      <div class="slide is-active"><img src="https://picsum.photos/seed/a/1200/480" alt="Slide 1"></div>
+      <div class="slide"><img src="https://picsum.photos/seed/b/1200/480" alt="Slide 2"></div>
+      <div class="slide"><img src="https://picsum.photos/seed/c/1200/480" alt="Slide 3"></div>
+      <div class="slide"><img src="https://picsum.photos/seed/d/1200/480" alt="Slide 4"></div>
+    </div>
+
+    <button class="nav next" aria-label="Próximo">→</button>
+
+    <div class="dots" role="tablist" aria-label="Selecionar slide">
+      <button class="dot is-active" aria-label="Slide 1"></button>
+      <button class="dot" aria-label="Slide 2"></button>
+      <button class="dot" aria-label="Slide 3"></button>
+      <button class="dot" aria-label="Slide 4"></button>
+    </div>
   </section>
+
+  <!-- JS do carrossel -->
+  <script>
+    (function(){
+      const track = document.querySelector('[data-track]');
+      const slides = Array.from(track.children);
+      const prev = document.querySelector('.carousel .prev');
+      const next = document.querySelector('.carousel .next');
+      const dots = Array.from(document.querySelectorAll('.carousel .dot'));
+      let i = 0;
+
+      function go(to){
+        i = (to + slides.length) % slides.length;
+        track.style.transform = `translateX(-${i * 100}%)`;
+        slides.forEach((s,idx)=>{
+          s.classList.toggle('is-active', idx===i);
+          s.classList.toggle('is-prev', idx===(i-1+slides.length)%slides.length);
+          s.classList.toggle('is-next', idx===(i+1)%slides.length);
+        });
+        dots.forEach((d,idx)=>d.classList.toggle('is-active', idx===i));
+      }
+
+      prev.addEventListener('click', ()=>go(i-1));
+      next.addEventListener('click', ()=>go(i+1));
+      dots.forEach((d,idx)=>d.addEventListener('click', ()=>go(idx)));
+
+      // Teclado
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='ArrowLeft') go(i-1);
+        if(e.key==='ArrowRight') go(i+1);
+      });
+
+      // Inicia estados vizinhos
+      go(0);
+    })();
+  </script>
 </body>
 </html>
-
